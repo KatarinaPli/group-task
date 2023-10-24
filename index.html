@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>IT Quiz</title>
   </head>
   <body>
     <header>
       <h1>Welcome in our IT Quiz with HTML, CSS and JS</h1>
       <main>
-        <button id="btn-nxt">Next Question</button>
+        <button id="btn-nxt" onclick="goNextQuestion()">Next Question</button>
+        <button id="btn-result" onclick="finishQuiz(score)">Finish</button>
       </main>
     </header>
     <script src="function.js"></script>

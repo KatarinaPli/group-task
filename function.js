@@ -33,7 +33,7 @@ const questions = [
   {
     question: "Which one is not DOM selector?",
     options: [
-      "sgetElementById",
+      "getElementById",
       "getAttribute",
       "pleaseSelectMe",
       "querySelector",
@@ -82,4 +82,24 @@ function checkAnswer(choosenAnswer) {
     document.querySelector("p").textContent =
       "Sorry, you are wrong! Try again.";
   }
+}
+
+function goNextQuestion() {
+  currentQuestionIndex++;
+  if (currentQuestionIndex < questions.length) {
+    showQuestion();
+  } else {
+    finishQuiz();
+  }
+}
+
+function finishQuiz(score) {
+  const resultField = document.querySelector("p");
+  resultField.innerText = `You choose Finish. You scored ${score} from ${questions.length}. `;
+  if (score <= 2) {
+    const resultMessage = ` You must work harder and become a genius!`;
+  } else {
+    const resultMessage = ` You did a great work and become a genius!`;
+  }
+  resultField.textContent += ` ${resultMessage}`;
 }
