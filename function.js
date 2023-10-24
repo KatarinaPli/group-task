@@ -44,16 +44,42 @@ const questions = [
 questions.sort(() => Math.random() - 0.5);
 let score = 0;
 let currentQuestionIndex = 0;
-console.log(questions)
+console.log(questions);
+
 function showQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
   const main = document.querySelector("main");
-  const questionField = document.addElement("h1");
-  const optionsField = document.addElement("div");
-  const resultField = document.addElement("p");
+
+  const questionField = document.createElement("h2");
+  const optionsField = document.createElement("div");
+  const resultField = document.createElement("p");
+
   main.appendChild(questionField);
   main.appendChild(optionsField);
   main.appendChild(resultField);
-   questionField.textContent = currentQuestion.question;
+
+  questionField.textContent = currentQuestion.question;
+  optionsField.innerHTML = "";
+
+  currentQuestion.options.forEach((option, index) => {
+    const optionElement = document.createElement("button");
+    optionElement.classList.add("option");
+    optionElement.textContent = option;
+    optionElement.addEventListener("click", () => checkAnswer(index));
+    optionsField.appendChild(optionElement);
+  });
+  resultField.textContent = "";
 }
 showQuestion();
+
+function checkAnswer(choosenAnswer) {
+  const currentQuestion = questions[currentQuestionIndex];
+  if (choosenAnswer === currentQuestion.correctAnswer) {
+    score++;
+
+    document.querySelector("p").textContent = "You are correct! Good job.";
+  } else {
+    document.querySelector("p").textContent =
+      "Sorry, you are wrong! Try again.";
+  }
+}
