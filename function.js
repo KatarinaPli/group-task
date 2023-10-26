@@ -44,7 +44,7 @@ const questions = [
 questions.sort(() => Math.random() - 0.5);
 let score = 0;
 let currentQuestionIndex = 0;
-console.log(questions);
+
 
 function showQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
